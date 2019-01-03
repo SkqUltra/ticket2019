@@ -154,7 +154,7 @@ class Train(object):
         while True:
             dataLen = len(trainDateList)
             trainDate = trainDateList[(retimes+1)%dataLen]
-            queryUrl = 'https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date={}&leftTicketDTO.from_station={}&leftTicketDTO.to_station={}&purpose_codes=ADULT'.format(
+            queryUrl = 'https://kyfw.12306.cn/otn/leftTicket/queryZ?leftTicketDTO.train_date={}&leftTicketDTO.from_station={}&leftTicketDTO.to_station={}&purpose_codes=ADULT'.format(
             trainDate, self.fromStationCode, self.toStationCode)
             self.trainDate = trainDate
             self.getjson('查询出现错误，退出程序', 20, queryUrl)
@@ -278,9 +278,7 @@ class Train(object):
         self.submitToken = pattern.findall(response.text)[0]
         self.keyCheckIsChange = pattern2.findall(response.text)[0]
 
-
         # 4 getPassengerDTOs++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
         print('正在获取乘客信息')
         url = 'https://kyfw.12306.cn/otn/confirmPassenger/getPassengerDTOs'
         data = {
