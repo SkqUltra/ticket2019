@@ -7,6 +7,9 @@
 - toStationName 终点站
 
 
+运行命令  python name 刷票间隔秒数(支持小数)
+如 python name 1
+
 
 
 
