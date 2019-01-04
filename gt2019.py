@@ -266,7 +266,7 @@ class Train(object):
                 print('提交订单失败')
                 print result
                 errtimes += 1
-                time.sleep(0.3)
+                time.sleep(findtime)
             
 
         # 3 initDC+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -383,11 +383,13 @@ class Train(object):
             print('订票成功，请登录12306查看')
         else:
             print('查询订单有误,请登录12306查看具体订单情况 %s,%s' % (result, result['data']['errMsg']))
+            a = 1/0
 
 
 if __name__ == "__main__":
     # 读取配置 获取购票人等信息
     jsonname = sys.argv[1]
+    findtime = sys.argv[2]
     f = io.open("%s.json"%jsonname, encoding='utf-8')  
     setting = json.load(f)
     trainName = setting["trainName"]
